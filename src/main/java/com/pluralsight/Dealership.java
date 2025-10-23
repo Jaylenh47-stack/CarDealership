@@ -9,8 +9,35 @@ public class Dealership {
     private ArrayList<Vehicle> inventory;
 
     public Dealership(String name, String address, String phone) {
+        this.inventory = new ArrayList<>();
         this.name = name;
         this.address = address;
         this.phone = phone;
     }
+
+    public ArrayList<Vehicle> getVehiclesByPrice(double min, double max){
+        //add vehicles within price range to an array list
+        return null;
+    }
+
+    public ArrayList<Vehicle> getVehiclesByMakeModel(String make, String model){
+        return null;
+    }
+
+    public ArrayList<Vehicle> getVehiclesByYear(int min, int max){
+        return null;
+    }
+
+    public ArrayList<Vehicle> getVehiclesByColor(String color){
+        return null;
+    }
+
+    public ArrayList<Vehicle> getVehiclesByMileage(int min, int max){
+        return null;
+    }
+
+    public ArrayList<Vehicle> getVehiclesByType(String vehicleType){
+        return null;
+    }
+
 }
