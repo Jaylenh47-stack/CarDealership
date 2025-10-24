@@ -15,6 +15,30 @@ public class Dealership {
         this.phone = phone;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     public ArrayList<Vehicle> getVehiclesByPrice(double min, double max){
         //add vehicles within price range to an array list
         return null;
@@ -40,4 +64,25 @@ public class Dealership {
         return null;
     }
 
+    public ArrayList<Vehicle> getAllVehicles(){
+        return null;
+    }
+
+    public void addVehicle(Vehicle v){
+
+    }
+
+    public void removeVehicle(Vehicle v){
+
+    }
+
+    @Override
+    public String toString() {
+        return "Dealership{" +
+                "name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", phone='" + phone + '\'' +
+                ", inventory=" + inventory +
+                '}';
+    }
 }
