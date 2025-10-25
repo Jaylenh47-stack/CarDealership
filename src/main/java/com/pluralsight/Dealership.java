@@ -41,7 +41,13 @@ public class Dealership {
 
     public ArrayList<Vehicle> getVehiclesByPrice(double min, double max){
         //add vehicles within price range to an array list
-        return null;
+       ArrayList<Vehicle> priceMatchVehicles = new ArrayList<>();
+        for(Vehicle v : this.inventory)
+            if (min <= v.getPrice() && max > v.getPrice())
+                priceMatchVehicles.add(v);
+
+
+        return priceMatchVehicles;
     }
 
     public ArrayList<Vehicle> getVehiclesByMakeModel(String make, String model){
@@ -65,11 +71,11 @@ public class Dealership {
     }
 
     public ArrayList<Vehicle> getAllVehicles(){
-        return null;
+        return this.inventory;
     }
 
     public void addVehicle(Vehicle v){
-
+        inventory.add(v);
     }
 
     public void removeVehicle(Vehicle v){

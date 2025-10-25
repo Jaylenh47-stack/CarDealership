@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class UserInterface {
     private Dealership dealership;
 
-    public void init(){
+    private void init(){
         //Create dealership from DealershipFileManager
         DealershipFileManager dealershipFileManager = new DealershipFileManager();
         dealership = dealershipFileManager.getDealership();
@@ -76,12 +76,25 @@ public class UserInterface {
         }
     }
 
-    public double processGetByPriceRequest(){
-        return 0;
+    private void displayVehicles(ArrayList<Vehicle> vehicles){
+        for (Vehicle v : vehicles){
+            System.out.println(v);
+        }
     }
 
-    public String processGetByMakeModelRequest(){
-        return "";
+    public void processGetByPriceRequest(){
+        double minPrice = ConsoleHelper.promptForDouble("Minimum price of Vehicle");
+        double maxPrice = ConsoleHelper.promptForDouble("Maximum price of Vehicle");
+        System.out.println(this.dealership.getVehiclesByPrice(minPrice, maxPrice));
+
+
+
+
+
+    }
+
+    public void processGetByMakeModelRequest(){
+
     }
 
     public int processGetByYearRequest(){
@@ -100,8 +113,13 @@ public class UserInterface {
         return 0;
     }
 
-    public ArrayList<Vehicle> processGetAllVehiclesRequest(){
-        return null;
+    public void processGetAllVehiclesRequest(){
+
+        for (Vehicle v: this.dealership.getAllVehicles()){
+            System.out.println(v);
+        }
+
+
     }
 
     public Vehicle processAddVehicleRequest(){
