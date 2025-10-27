@@ -42,28 +42,60 @@ public class Dealership {
     public ArrayList<Vehicle> getVehiclesByPrice(double min, double max){
         //add vehicles within price range to an array list
        ArrayList<Vehicle> priceMatchVehicles = new ArrayList<>();
-        for(Vehicle v : this.inventory)
-            if (min <= v.getPrice() && max > v.getPrice())
+        for(Vehicle v : this.inventory) {
+            if (min <= v.getPrice() && max > v.getPrice()) {
                 priceMatchVehicles.add(v);
-
+            }
+        }
 
         return priceMatchVehicles;
     }
 
     public ArrayList<Vehicle> getVehiclesByMakeModel(String make, String model){
-        return null;
+        ArrayList<Vehicle> makeModelMatchVehicles = new ArrayList<>();
+        for (Vehicle v : this.inventory){
+            if (make.equalsIgnoreCase(v.getMake()) && model.equalsIgnoreCase(v.getModel())){
+                makeModelMatchVehicles.add(v);
+            }
+        }
+
+        return makeModelMatchVehicles;
     }
 
     public ArrayList<Vehicle> getVehiclesByYear(int min, int max){
-        return null;
+        ArrayList<Vehicle> yearMatchVehicles = new ArrayList<>();
+
+        for (Vehicle v: this.inventory){
+            if (min < v.getYear() && max > v.getYear()){
+                yearMatchVehicles.add(v);
+            }
+        }
+        return yearMatchVehicles;
     }
 
     public ArrayList<Vehicle> getVehiclesByColor(String color){
-        return null;
+        ArrayList<Vehicle> colorMatchVehicles = new ArrayList<>();
+
+        for (Vehicle v: this.inventory){
+            if (color.equalsIgnoreCase(v.getColor())){
+                colorMatchVehicles.add(v);
+            }
+        }
+        return colorMatchVehicles;
+
+
+
     }
 
     public ArrayList<Vehicle> getVehiclesByMileage(int min, int max){
-        return null;
+        ArrayList<Vehicle> mileageMatchVehicles = new ArrayList<>();
+
+        for (Vehicle v: this.inventory){
+            if (min < v.getOdometer() && max > v.getOdometer()){
+                mileageMatchVehicles.add(v);
+            }
+        }
+        return mileageMatchVehicles;
     }
 
     public ArrayList<Vehicle> getVehiclesByType(String vehicleType){

@@ -10,7 +10,6 @@ public class UserInterface {
         DealershipFileManager dealershipFileManager = new DealershipFileManager();
         dealership = dealershipFileManager.getDealership();
 
-
     }
 
     public UserInterface() {
@@ -85,32 +84,49 @@ public class UserInterface {
     public void processGetByPriceRequest(){
         double minPrice = ConsoleHelper.promptForDouble("Minimum price of Vehicle");
         double maxPrice = ConsoleHelper.promptForDouble("Maximum price of Vehicle");
-        System.out.println(this.dealership.getVehiclesByPrice(minPrice, maxPrice));
-
-
-
-
+        displayVehicles(dealership.getVehiclesByPrice(minPrice, maxPrice));
+        //for (Vehicle v : dealership.getVehiclesByPrice(minPrice, maxPrice)) {
+           // System.out.println(v);
+           // System.out.println(this.dealership.getVehiclesByPrice(minPrice, maxPrice));
+        //}
 
     }
 
     public void processGetByMakeModelRequest(){
+        String make = ConsoleHelper.promptForString("Enter the make of the vehicle");
+        String model = ConsoleHelper.promptForString("Enter the model of the vehicle");
+        for (Vehicle v : dealership.getVehiclesByMakeModel(make, model)){
+            System.out.println(v);
+        }
+    }
+
+    public void processGetByYearRequest(){
+        int minYear = ConsoleHelper.promptForInt("Enter the earliest year of the vehicles you want to see");
+        int maxYear = ConsoleHelper.promptForInt("Enter the latest year of the vehicles you want to see");
+        for (Vehicle v : dealership.getVehiclesByYear(minYear, maxYear)){
+            System.out.println(v);
+        }
+
 
     }
 
-    public int processGetByYearRequest(){
-        return 0;
+    public void processGetByColorRequest(){
+        String color = ConsoleHelper.promptForString("Enter the color of the vehicle you want to see");
+        for (Vehicle v : dealership.getVehiclesByColor(color)){
+            System.out.println(v);
+        }
     }
 
-    public String processGetByColorRequest(){
-        return "";
+    public void processGetByMileageRequest(){
+        int minMileage = ConsoleHelper.promptForInt("Enter the minimum miles of the vehicles you want to see ");
+        int maxMileage = ConsoleHelper.promptForInt("Enter the maximum miles of the vehicles you want to see ");
+        for (Vehicle v : dealership.getVehiclesByYear(minMileage, maxMileage)) {
+            System.out.println(v);
+        }
     }
 
-    public int processGetByMileageRequest(){
-        return 0;
-    }
+    public void processGetByVehicleTypeRequest(){
 
-    public double processGetByVehicleTypeRequest(){
-        return 0;
     }
 
     public void processGetAllVehiclesRequest(){
@@ -122,12 +138,12 @@ public class UserInterface {
 
     }
 
-    public Vehicle processAddVehicleRequest(){
-        return null;
+    public void processAddVehicleRequest(){
+
     }
 
-    public Vehicle processRemoveVehicleRequest(){
-        return null;
+    public void processRemoveVehicleRequest(){
+
     }
 
 
