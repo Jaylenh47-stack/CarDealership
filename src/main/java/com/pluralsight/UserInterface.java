@@ -120,13 +120,15 @@ public class UserInterface {
     public void processGetByMileageRequest(){
         int minMileage = ConsoleHelper.promptForInt("Enter the minimum miles of the vehicles you want to see ");
         int maxMileage = ConsoleHelper.promptForInt("Enter the maximum miles of the vehicles you want to see ");
-        for (Vehicle v : dealership.getVehiclesByYear(minMileage, maxMileage)) {
+        for (Vehicle v : dealership.getVehiclesByMileage(minMileage, maxMileage)) {
             System.out.println(v);
         }
     }
 
     public void processGetByVehicleTypeRequest(){
+        String type = ConsoleHelper.promptForString("Enter the type of the vehicles you want to see ");
 
+        displayVehicles(dealership.getVehiclesByType(type));
     }
 
     public void processGetAllVehiclesRequest(){

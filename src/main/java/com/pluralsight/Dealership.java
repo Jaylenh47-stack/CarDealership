@@ -98,8 +98,15 @@ public class Dealership {
         return mileageMatchVehicles;
     }
 
-    public ArrayList<Vehicle> getVehiclesByType(String vehicleType){
-        return null;
+    public ArrayList<Vehicle> getVehiclesByType(String type){
+        ArrayList<Vehicle> typeMatchVehicles = new ArrayList<>();
+
+        for (Vehicle v: this.inventory){
+            if (type.equalsIgnoreCase(v.getVehicleType())){
+                typeMatchVehicles.add(v);
+            }
+        }
+        return typeMatchVehicles;
     }
 
     public ArrayList<Vehicle> getAllVehicles(){
@@ -116,11 +123,6 @@ public class Dealership {
 
     @Override
     public String toString() {
-        return "Dealership{" +
-                "name='" + name + '\'' +
-                ", address='" + address + '\'' +
-                ", phone='" + phone + '\'' +
-                ", inventory=" + inventory +
-                '}';
+        return String.format("%s|%s|%s", this.name, this.address, this.phone);
     }
 }
