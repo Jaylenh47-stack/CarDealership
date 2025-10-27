@@ -114,6 +114,8 @@ public class Dealership {
     }
 
     public void addVehicle(Vehicle v){
+        //make vehicle from console
+       // Vehicle v = new Vehicle()
         inventory.add(v);
     }
 

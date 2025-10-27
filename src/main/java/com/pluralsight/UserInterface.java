@@ -127,7 +127,6 @@ public class UserInterface {
 
     public void processGetByVehicleTypeRequest(){
         String type = ConsoleHelper.promptForString("Enter the type of the vehicles you want to see ");
-
         displayVehicles(dealership.getVehiclesByType(type));
     }
 
@@ -137,15 +136,37 @@ public class UserInterface {
             System.out.println(v);
         }
 
-
     }
 
+
+
     public void processAddVehicleRequest(){
+
+        int vin = ConsoleHelper.promptForInt("Enter the vin number ");
+        int year = ConsoleHelper.promptForInt("Enter the year of the vehicle ");
+        String make = ConsoleHelper.promptForString("Enter the make of the vehicle");
+        String model = ConsoleHelper.promptForString("Enter the model of the vehicle");
+        String type = ConsoleHelper.promptForString("Enter the type of the vehicle ");
+        String color = ConsoleHelper.promptForString("Enter the color of the vehicle ");
+        int odometer = ConsoleHelper.promptForInt("Enter the mileage of the vehicle");
+        double price = ConsoleHelper.promptForDouble("Enter the price of the vehicle");
+
+        Vehicle v = new Vehicle(vin, year, make, model, type, color, odometer, price);
+        dealership.addVehicle(v);
+        try{
+            DealershipFileManager.saveDealership(dealership);
+        }
+        catch (Exception e) {
+            System.out.println("There was an error");
+        }
 
     }
 
     public void processRemoveVehicleRequest(){
-
+//        int vin = ConsoleHelper.promptForInt("Enter the vin number of the vehicle you want to remove");
+//        for (Vehicle v : dealership.getAllVehicles()){
+//            if ()
+//        }
     }
 
 
