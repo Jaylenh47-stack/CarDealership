@@ -153,20 +153,28 @@ public class UserInterface {
 
         Vehicle v = new Vehicle(vin, year, make, model, type, color, odometer, price);
         dealership.addVehicle(v);
-        try{
-            DealershipFileManager.saveDealership(dealership);
-        }
-        catch (Exception e) {
-            System.out.println("There was an error");
-        }
+
+        DealershipFileManager.saveDealership(dealership);
+        System.out.println("Vehicle added successfully");
+
+
+
 
     }
 
     public void processRemoveVehicleRequest(){
-//        int vin = ConsoleHelper.promptForInt("Enter the vin number of the vehicle you want to remove");
-//        for (Vehicle v : dealership.getAllVehicles()){
-//            if ()
-//        }
+        int vin = ConsoleHelper.promptForInt("Enter the vin number of the vehicle you want to remove");
+        boolean isFound = false;
+        for (Vehicle v : dealership.getAllVehicles()){
+            if (v.getVin() == vin){
+                dealership.removeVehicle(v);
+                isFound =true;
+                DealershipFileManager.saveDealership(dealership);
+            }
+        }
+        if (!isFound){
+            System.out.println("No matching vin number in inventory");
+        }
     }
 
 

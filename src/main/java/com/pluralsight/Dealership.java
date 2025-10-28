@@ -114,13 +114,12 @@ public class Dealership {
     }
 
     public void addVehicle(Vehicle v){
-        //make vehicle from console
-       // Vehicle v = new Vehicle()
+
         inventory.add(v);
     }
 
     public void removeVehicle(Vehicle v){
-
+        inventory.remove(v);
     }
 
     @Override
