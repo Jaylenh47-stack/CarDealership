@@ -95,34 +95,28 @@ public class UserInterface {
     public void processGetByMakeModelRequest(){
         String make = ConsoleHelper.promptForString("Enter the make of the vehicle");
         String model = ConsoleHelper.promptForString("Enter the model of the vehicle");
-        for (Vehicle v : dealership.getVehiclesByMakeModel(make, model)){
-            System.out.println(v);
-        }
+        displayVehicles(dealership.getVehiclesByMakeModel(make, model));
+
+
     }
 
     public void processGetByYearRequest(){
         int minYear = ConsoleHelper.promptForInt("Enter the earliest year of the vehicles you want to see");
         int maxYear = ConsoleHelper.promptForInt("Enter the latest year of the vehicles you want to see");
-        for (Vehicle v : dealership.getVehiclesByYear(minYear, maxYear)){
-            System.out.println(v);
-        }
+        displayVehicles(dealership.getVehiclesByYear(minYear, maxYear));
 
 
     }
 
     public void processGetByColorRequest(){
         String color = ConsoleHelper.promptForString("Enter the color of the vehicle you want to see");
-        for (Vehicle v : dealership.getVehiclesByColor(color)){
-            System.out.println(v);
-        }
+        displayVehicles(dealership.getVehiclesByColor(color));
     }
 
     public void processGetByMileageRequest(){
         int minMileage = ConsoleHelper.promptForInt("Enter the minimum miles of the vehicles you want to see ");
         int maxMileage = ConsoleHelper.promptForInt("Enter the maximum miles of the vehicles you want to see ");
-        for (Vehicle v : dealership.getVehiclesByMileage(minMileage, maxMileage)) {
-            System.out.println(v);
-        }
+        displayVehicles(dealership.getVehiclesByMileage(minMileage, maxMileage));
     }
 
     public void processGetByVehicleTypeRequest(){
@@ -132,9 +126,7 @@ public class UserInterface {
 
     public void processGetAllVehiclesRequest(){
 
-        for (Vehicle v: this.dealership.getAllVehicles()){
-            System.out.println(v);
-        }
+        displayVehicles(dealership.getAllVehicles());
 
     }
 
@@ -163,18 +155,32 @@ public class UserInterface {
     }
 
     public void processRemoveVehicleRequest(){
+
         int vin = ConsoleHelper.promptForInt("Enter the vin number of the vehicle you want to remove");
-        boolean isFound = false;
-        for (Vehicle v : dealership.getAllVehicles()){
-            if (v.getVin() == vin){
-                dealership.removeVehicle(v);
-                isFound =true;
-                DealershipFileManager.saveDealership(dealership);
-            }
+
+        Vehicle v = dealership.getVehicleByVIN(vin);
+
+        if(v != null){
+            dealership.removeVehicle(v);
+            DealershipFileManager.saveDealership(dealership);
         }
-        if (!isFound){
+        else{
             System.out.println("No matching vin number in inventory");
         }
+
+
+        //        boolean isFound = false;
+//        for (Vehicle v : dealership.getAllVehicles()){
+//            if (v.getVin() == vin){
+//                dealership.removeVehicle(v);
+//                isFound =true;
+//                DealershipFileManager.saveDealership(dealership);
+//                System.out.println("Vehicle removed");
+//            }
+//        }
+//        if (!isFound){
+//            System.out.println("No matching vin number in inventory");
+//        }
     }
 
 
